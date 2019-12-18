@@ -1,0 +1,24 @@
+<mat-toolbar class="header">Header</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav opened mode="side" opened role="navigation" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink='/home' routerLinkActive="router-link-active">Home</a>
+      <a mat-list-item routerLink='/language' routerLinkActive="router-link-active">Language List</a>
+      <a mat-list-item routerLink='/currency' routerLinkActive="router-link-active">Currency List</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="padding">
+      <mat-form-field>
+        <mat-label>Country List</mat-label>
+        <mat-select [(ngModel)]="selectedCountry" (selectionChange)="onChange($event)">
+          <mat-option *ngFor="let country of countryList" [value]="country.alpha3Code">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
